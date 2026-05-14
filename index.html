@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Cacto BI — Gestão Comercial</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -29,7 +29,7 @@
   --cacto-gold:#b8862a;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;overflow:hidden}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;overflow:hidden;-webkit-tap-highlight-color:transparent;}
 .app{display:flex;height:100vh}
 
 /* SIDEBAR */
@@ -69,7 +69,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .big-label{font-size:11px;color:var(--text3);margin-top:2px}
 
 /* CONTENT */
-.content-area{flex:1;overflow-y:auto;overflow-x:hidden}
+.content-area{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 .content-area::-webkit-scrollbar{width:4px}
 .content-area::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .pane{display:none}
@@ -162,6 +162,136 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .rm-label{width:140px;font-size:11px;color:var(--text2);text-align:right;flex-shrink:0}
 .rm-track{flex:1;height:26px;background:var(--bg2);border-radius:8px;position:relative;overflow:hidden}
 .rm-bar{position:absolute;top:3px;bottom:3px;border-radius:6px;display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — breakpoints: 768px tablet, 480px phone
+   ═══════════════════════════════════════════════════════════ */
+
+/* TABLET (≤ 900px) */
+@media (max-width: 900px) {
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g21{grid-template-columns:1fr}
+  .g12{grid-template-columns:1fr}
+  .g31{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .progress-strip{flex-wrap:wrap;gap:12px}
+  .ps-divider{display:none}
+  .topbar-right .chip:nth-child(n+4){display:none}
+}
+
+/* MOBILE (≤ 640px) */
+@media (max-width: 640px) {
+
+  /* Layout raiz: sidebar vira bottom nav */
+  .app{flex-direction:column}
+
+  /* SIDEBAR → BOTTOM NAV */
+  .sidebar{
+    width:100%;height:60px;
+    flex-direction:row;justify-content:space-around;align-items:center;
+    border-radius:0;padding:0 8px;
+    position:fixed;bottom:0;left:0;right:0;z-index:100;
+    border-top:1px solid rgba(255,255,255,0.1);
+  }
+  .sb-logo{display:none}
+  .sb-sep{display:none}
+  .sb-btn{width:44px;height:44px;font-size:20px}
+  .sb-btn.active{background:#b8862a;border-radius:12px}
+
+  /* MAIN: padding bottom para não sobrepor bottom nav */
+  .main{padding:12px 12px 0 12px}
+
+  /* TOPBAR */
+  .topbar{margin-bottom:10px;flex-wrap:wrap;gap:6px}
+  .topbar-left img{height:20px}
+  .page-title{font-size:15px}
+  .topbar-right{gap:4px;flex-wrap:wrap}
+  .topbar-right .chip{font-size:10px;padding:3px 8px}
+  #sheets-status{font-size:10px}
+
+  /* PROGRESS STRIP → cards empilhados */
+  .progress-strip{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:8px;padding:10px 12px;border-radius:12px
+  }
+  .ps-item{flex-direction:column;align-items:flex-start;gap:3px}
+  .ps-label{font-size:10px}
+  .ps-bar-wrap{display:none}
+  .big-num{font-size:22px}
+  .big-label{font-size:10px}
+  .ps-divider{display:none}
+
+  /* CONTENT AREA: scroll até o bottom nav */
+  .content-area{padding-bottom:72px}
+
+  /* GRIDS → coluna única */
+  .g4,.g3,.g2,.g21,.g12,.g31{grid-template-columns:1fr;gap:10px;margin-bottom:10px}
+
+  /* CARDS */
+  .card,.card-dark,.card-yellow{padding:14px 14px;border-radius:14px}
+  .card-title{font-size:10px;margin-bottom:10px}
+
+  /* MÉTRICAS */
+  .big-metric{font-size:26px}
+  .metric-sub{font-size:11px}
+  .kpi-sm-val{font-size:17px}
+
+  /* TABS */
+  .tab-row{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .tab-btn{white-space:nowrap;padding:6px 12px;font-size:11px}
+
+  /* TABELAS → scroll horizontal */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px}
+  .tbl{min-width:480px;font-size:11px}
+  .tbl th,.tbl td{padding:7px 8px}
+
+  /* ACTION ROWS → empilhado */
+  .action-grid{display:flex!important;flex-direction:column;gap:10px}
+  .action-grid>div{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important;padding:12px!important}
+  .action-grid>div>span:first-child{grid-column:1/-1}
+  .action-grid>div>span:nth-child(2){grid-column:1/-1;font-size:12px}
+
+  /* ROADMAP */
+  .rm-label{width:90px;font-size:10px}
+
+  /* FUNIL */
+  .funnel-label{width:80px;font-size:10px}
+
+  /* SCORECARD */
+  .bsc-grid{grid-template-columns:1fr!important}
+
+  /* CHARTS: altura reduzida */
+  canvas{max-height:180px}
+
+  /* KPI cards no overview: 2 colunas */
+  .g4-kpi{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+  /* Ocultar colunas menos importantes nas tabelas mobile */
+  .hide-mobile{display:none!important}
+
+  /* Alertas */
+  .alert{font-size:11px;padding:8px 10px}
+
+  /* Bottom nav label */
+  .sb-btn::after{
+    content:attr(title);
+    display:block;
+    font-size:8px;
+    font-family:var(--font);
+    color:rgba(255,255,255,0.5);
+    margin-top:2px;
+    line-height:1;
+  }
+  .sb-btn.active::after{color:#1a1a1a}
+}
+
+/* MUITO PEQUENO (≤ 380px) */
+@media (max-width: 380px) {
+  .topbar-right .chip{display:none}
+  .big-metric{font-size:22px}
+  .progress-strip{grid-template-columns:1fr}
+  .ps-item:nth-child(n+3){display:none}
+}
 </style>
 </head>
 <body>
@@ -387,7 +517,10 @@ function mkChart(id,type,labels,datasets,opts={}){
     plugins:{...chartOpts.plugins,...(opts.plugins||{})},
     scales:{...chartOpts.scales,...(opts.scales||{})}}});
 }
-function cw(id,h=200){return`<div style="position:relative;width:100%;height:${h}px"><canvas id="${id}"></canvas></div>`;}
+function cw(id,h=200){
+  const mh = isMobile() ? Math.min(h, 160) : h;
+  return`<div style="position:relative;width:100%;height:${mh}px"><canvas id="${id}"></canvas></div>`;
+}
 
 // ─── PAGES ────────────────────────────────────────────────────────────────
 const PAGES=['Overview','Vendas','Anúncios','SKUs','Metas','Plano de Ação','Scorecard'];
@@ -436,7 +569,7 @@ function tabRow(tabs,active,fn){
 // ─── 0. OVERVIEW ─────────────────────────────────────────────────────────
 function renderOverview(ca){
   ca.innerHTML=`
-  <div class="g4">
+  <div class="g4 g4-kpi">
     ${bigCard('Faturamento mai (proj)','R$66k','2 SKUs ativos','↑ melhor mês 2026','mt-up','#1a1a1a',49)}
     ${bigCard('Pedidos mai (proj)','335','ritmo 11,2/dia','↑ acima de set/25','mt-up','#1a1a1a',108)}
     ${bigCard('Ticket médio','R$235','meta: R$265','↓ efeito mix','mt-dn','var(--red)',89)}
@@ -737,7 +870,7 @@ function renderSkuContent(t){
       </div>
     </div>
     <div class="card"><div class="card-title">Unidades por trimestre — heatmap</div>
-      <div style="overflow-x:auto"><table class="tbl">
+      <div class="tbl-wrap"><table class="tbl">
         <thead><tr><th>SKU</th><th>Q2/25</th><th>Q3/25</th><th>Q4/25</th><th>Q1/26</th><th>Q2/26*</th><th style="border-left:2px solid var(--border)">Mai/26</th><th>Total</th></tr></thead>
         <tbody>${SKUS.map(s=>{
           const q=[s.un[0]+s.un[1],s.un[2]+s.un[3]+s.un[4],s.un[5]+s.un[6]+s.un[7],s.un[8]+s.un[9]+s.un[10],s.un[11]+s.un[12],s.un[12]];
@@ -983,7 +1116,7 @@ async function renderPlanoContent(t){
       <div style="display:grid;grid-template-columns:90px 1fr 80px 130px 80px;gap:8px;padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--border)">
         <div>Prazo</div><div>Ação</div><div>Impacto</div><div>Status</div><div>Resp.</div>
       </div>
-      <div id="action-rows"></div>
+      <div id="action-rows" class="action-grid"></div>
     </div>`;
     renderActionRows2();
   } else {
@@ -1175,6 +1308,26 @@ async function checkSheetsConnection() {
     banner.style.color = 'var(--red)';
   }
 }
+
+
+// ─── MOBILE DETECTION ────────────────────────────────────────────────────────
+const isMobile = () => window.innerWidth <= 640;
+const isTablet = () => window.innerWidth <= 900 && window.innerWidth > 640;
+
+// Ajusta altura dos charts baseado no tamanho da tela
+function chartHeight(desktop=200, tablet=170, mobile=150) {
+  if (isMobile()) return mobile;
+  if (isTablet()) return tablet;
+  return desktop;
+}
+
+// Rerender ao girar a tela
+window.addEventListener('resize', () => {
+  clearTimeout(window._resizeTimer);
+  window._resizeTimer = setTimeout(() => {
+    renderContent();
+  }, 300);
+});
 
 // ─── INIT ─────────────────────────────────────────────────────────────────
 setPage(0);
