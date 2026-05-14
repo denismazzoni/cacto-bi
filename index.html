@@ -325,6 +325,64 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .pwa-splash .splash-name { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; }
 .pwa-splash .splash-sub  { color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 4px; }
 .pwa-splash .splash-dot  { width: 6px; height: 6px; border-radius: 50%; background: #b8862a; margin-top: 32px; animation: pulse 1.5s infinite; }
+
+/* ── DATE RANGE PICKER ─────────────────────────────── */
+.dr-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--card);border-radius:var(--r);border:1px solid var(--border);margin-bottom:14px;flex-wrap:wrap;flex-shrink:0}
+.dr-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--card3);color:var(--text2);transition:all 0.15s;font-family:var(--font);white-space:nowrap}
+.dr-btn:hover{border-color:var(--yellow);color:var(--yellow)}
+.dr-btn.active{background:var(--card2);color:#fff;border-color:var(--card2)}
+.dr-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
+.dr-custom{display:none;align-items:center;gap:6px;flex-wrap:wrap}
+.dr-custom.show{display:flex}
+.dr-input{border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:12px;font-family:var(--font);background:var(--card3);color:var(--text);outline:none}
+.dr-input:focus{border-color:var(--yellow)}
+.dr-apply{background:var(--card2);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font)}
+.dr-label{font-size:11px;color:var(--text3);white-space:nowrap}
+
+/* ── CHAT WIDGET ───────────────────────────────────── */
+.chat-fab{position:fixed;bottom:76px;right:16px;width:52px;height:52px;border-radius:50%;background:var(--card2);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:500;transition:all 0.2s}
+.chat-fab:hover{transform:scale(1.08);background:#b8862a}
+.chat-fab .chat-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg)}
+.chat-panel{position:fixed;bottom:76px;right:16px;width:360px;height:520px;background:var(--card);border-radius:20px;border:1px solid var(--border);box-shadow:0 16px 48px rgba(0,0,0,0.15);z-index:501;display:flex;flex-direction:column;transform:scale(0.9) translateY(20px);opacity:0;pointer-events:none;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);transform-origin:bottom right}
+.chat-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.chat-header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0;border-radius:20px 20px 0 0;background:var(--card2)}
+.chat-avatar{width:34px;height:34px;border-radius:50%;background:#b8862a;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.chat-header-info{flex:1}
+.chat-header-name{font-size:13px;font-weight:600;color:#fff}
+.chat-header-status{font-size:10px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:4px}
+.chat-online-dot{width:6px;height:6px;border-radius:50%;background:#2db87a;animation:pulse 2s infinite}
+.chat-close{background:none;border:none;color:rgba(255,255,255,0.5);font-size:18px;cursor:pointer;padding:0;line-height:1}
+.chat-close:hover{color:#fff}
+.chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.chat-messages::-webkit-scrollbar{width:3px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:12px;line-height:1.5;word-break:break-word}
+.msg-bot{background:var(--card3);color:var(--text);border-radius:4px 14px 14px 14px;align-self:flex-start;border:1px solid var(--border)}
+.msg-user{background:var(--card2);color:#fff;border-radius:14px 4px 14px 14px;align-self:flex-end}
+.msg-time{font-size:9px;color:var(--text3);margin-top:3px;text-align:right}
+.msg-typing{display:flex;gap:4px;padding:10px 14px;background:var(--card3);border-radius:4px 14px 14px 14px;align-self:flex-start;border:1px solid var(--border)}
+.msg-typing span{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typing 1.2s infinite}
+.msg-typing span:nth-child(2){animation-delay:0.2s}
+.msg-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.chat-suggestions{display:flex;gap:6px;padding:0 14px 10px;flex-wrap:wrap;flex-shrink:0}
+.chat-sug{padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--card3);font-size:11px;color:var(--text2);cursor:pointer;transition:all 0.15s;font-family:var(--font);white-space:nowrap}
+.chat-sug:hover{border-color:var(--yellow);color:var(--yellow)}
+.chat-input-row{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--border);flex-shrink:0}
+.chat-input{flex:1;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:12px;font-family:var(--font);background:var(--card3);color:var(--text);outline:none;resize:none;line-height:1.4}
+.chat-input:focus{border-color:var(--yellow)}
+.chat-send{width:36px;height:36px;border-radius:10px;background:var(--card2);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background 0.15s}
+.chat-send:hover{background:#b8862a}
+.msg-section{font-weight:600;color:var(--text);margin:4px 0 2px}
+.msg-item{display:flex;gap:6px;margin:2px 0}
+.msg-item::before{content:"•";color:var(--yellow);flex-shrink:0}
+
+@media(max-width:640px){
+  .chat-panel{width:calc(100vw - 20px);right:10px;bottom:70px;height:70vh}
+  .chat-fab{bottom:72px;right:12px}
+  .dr-bar{padding:8px 10px;gap:6px}
+  .dr-btn{padding:5px 10px;font-size:11px}
+}
 </style>
 </head>
 <body>
@@ -407,6 +465,25 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     </div>
   </div>
 
+
+  <!-- DATE RANGE BAR -->
+  <div class="dr-bar" id="dr-bar">
+    <span class="dr-label">Período:</span>
+    <button class="dr-btn" onclick="setDateRange('dia')" data-range="dia">Hoje</button>
+    <button class="dr-btn" onclick="setDateRange('semana')" data-range="semana">7 dias</button>
+    <button class="dr-btn active" onclick="setDateRange('mes')" data-range="mes">Mês</button>
+    <button class="dr-btn" onclick="setDateRange('trimestre')" data-range="trimestre">Trimestre</button>
+    <button class="dr-btn" onclick="setDateRange('ano')" data-range="ano">Ano</button>
+    <div class="dr-sep"></div>
+    <button class="dr-btn" onclick="setDateRange('personalizado')" data-range="personalizado">Personalizado</button>
+    <div class="dr-custom" id="dr-custom">
+      <input type="date" class="dr-input" id="dr-from" value="2026-05-01">
+      <span style="font-size:12px;color:var(--text3)">até</span>
+      <input type="date" class="dr-input" id="dr-to" value="2026-05-14">
+      <button class="dr-apply" onclick="applyCustomRange()">Aplicar</button>
+    </div>
+    <div style="margin-left:auto;font-size:11px;color:var(--text3)" id="dr-period-label">Mai/2026</div>
+  </div>
   <!-- CONTENT -->
   <div class="content-area" id="content-area"></div>
 
@@ -609,6 +686,7 @@ function tabRow(tabs,active,fn){
 // ─── 0. OVERVIEW ─────────────────────────────────────────────────────────
 function renderOverview(ca){
   ca.innerHTML=`
+  <div style="font-size:11px;color:var(--text3);margin-bottom:8px">📅 Período: ${rangeLabel()}</div>
   <div class="g4 g4-kpi">
     ${bigCard('Faturamento mai (proj)','R$66k','2 SKUs ativos','↑ melhor mês 2026','mt-up','#1a1a1a',49)}
     ${bigCard('Pedidos mai (proj)','335','ritmo 11,2/dia','↑ acima de set/25','mt-up','#1a1a1a',108)}
@@ -1480,6 +1558,277 @@ function showIOSInstallTip() {
 }
 
 // Chamar no init
+
+// ─── DATE RANGE STATE ────────────────────────────────────────────────────────
+const TODAY = new Date();
+function fmtDate(d){ return d.toISOString().split('T')[0]; }
+function fmtLabel(d){ return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'}); }
+function fmtMonthLabel(d){ return d.toLocaleDateString('pt-BR',{month:'short',year:'numeric'}); }
+
+let currentRange = {
+  type: 'mes',
+  from: fmtDate(new Date(TODAY.getFullYear(), TODAY.getMonth(), 1)),
+  to:   fmtDate(TODAY),
+  label: 'Mai/2026'
+};
+
+function setDateRange(type) {
+  const now = new Date();
+  let from, to, label;
+
+  if (type === 'dia') {
+    from = to = fmtDate(now);
+    label = 'Hoje · ' + now.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+  } else if (type === 'semana') {
+    const d = new Date(now); d.setDate(d.getDate() - 6);
+    from = fmtDate(d); to = fmtDate(now);
+    label = 'Últimos 7 dias';
+  } else if (type === 'mes') {
+    from = fmtDate(new Date(now.getFullYear(), now.getMonth(), 1));
+    to   = fmtDate(now);
+    label = now.toLocaleDateString('pt-BR',{month:'short',year:'numeric'}).replace('. ','/');;
+  } else if (type === 'trimestre') {
+    const d = new Date(now); d.setMonth(d.getMonth() - 2); d.setDate(1);
+    from = fmtDate(d); to = fmtDate(now);
+    label = 'Último trimestre';
+  } else if (type === 'ano') {
+    from = fmtDate(new Date(now.getFullYear(), 0, 1));
+    to   = fmtDate(now);
+    label = now.getFullYear().toString();
+  } else if (type === 'personalizado') {
+    document.getElementById('dr-custom').classList.toggle('show');
+    document.querySelectorAll('.dr-btn').forEach(b => b.classList.toggle('active', b.dataset.range === type));
+    return;
+  }
+
+  currentRange = { type, from, to, label };
+  document.querySelectorAll('.dr-btn').forEach(b => b.classList.toggle('active', b.dataset.range === type));
+  document.getElementById('dr-period-label').textContent = label;
+  document.getElementById('dr-custom').classList.remove('show');
+
+  // Re-renderiza o conteúdo com o novo período
+  renderContent();
+
+  // Atualiza o chat context
+  window._chatContext = `Período selecionado: ${label} (${from} a ${to})`;
+}
+
+function applyCustomRange() {
+  const from = document.getElementById('dr-from').value;
+  const to   = document.getElementById('dr-to').value;
+  if (!from || !to || from > to) { alert('Período inválido'); return; }
+  const fd = new Date(from), td = new Date(to);
+  const label = fmtLabel(fd) + ' → ' + fmtLabel(td);
+  currentRange = { type:'personalizado', from, to, label };
+  document.getElementById('dr-period-label').textContent = label;
+  document.getElementById('dr-custom').classList.remove('show');
+  document.querySelectorAll('.dr-btn').forEach(b => b.classList.toggle('active', b.dataset.range === 'personalizado'));
+  renderContent();
+  window._chatContext = `Período personalizado: ${label}`;
+}
+
+// Helper para filtrar dados pelo range atual
+function filterDataByRange(data, dateField) {
+  if (!data || !data.length) return data;
+  return data.filter(d => {
+    const dt = d[dateField] || d.date || d.mes;
+    if (!dt) return true;
+    return dt >= currentRange.from && dt <= currentRange.to;
+  });
+}
+
+// Retorna rótulo do período atual para títulos
+function rangeLabel() { return currentRange.label; }
+
+// ─── CHAT AGENT ─────────────────────────────────────────────────────────────
+let chatOpen = false;
+let chatHistory = [];
+const AGENT_PROMPT = `Você é um especialista em análise comercial do Mercado Livre. Seu papel é acessar e interpretar os dados da conta (vendas, anúncios, reputação, métricas de conversão, estoque e concorrência), identificar oportunidades e gargalos comerciais, e entregar análises detalhadas com planos de ação práticos e priorizados. Sempre estruture suas respostas em: (1) Diagnóstico — resumo do cenário atual com os principais indicadores; (2) Pontos de atenção — problemas ou riscos identificados; (3) Plano de Ação — iniciativas concretas, ordenadas por impacto e viabilidade, com métricas de acompanhamento. Foque em resultados comerciais: aumento de vendas, melhora de reputação, otimização de anúncios e precificação competitiva. Responda sempre em português brasileiro. Seja direto, objetivo e use dados concretos. Formate sua resposta usando marcadores como **negrito** para títulos das seções e • para listas.`;
+
+function getContextData() {
+  return `
+DADOS ATUAIS DA CONTA CACTO (Mercado Livre):
+Período analisado: ${currentRange.label} (${currentRange.from} a ${currentRange.to})
+
+FATURAMENTO:
+- Mai/2026 realizado (14 dias): R$ 34.817
+- Projeção mês: R$ 74.679 (+10% acima da meta)
+- Meta mensal: R$ 68.085
+- 2026 acumulado: R$ 288k (Jan–14 Mai)
+- 2025 total: R$ 451k
+
+PEDIDOS:
+- Mai/2026: 148 pedidos em 14 dias (ritmo: 10,6/dia)
+- Ticket médio: R$ 235 (meta: R$ 265)
+
+TOP SKUs MAI/2026:
+- CC0001: 62 un · R$16.740 (48,1%) — PAUSADO por estoque zero
+- CC0002: 32 un · R$8.042 (23,1%) — PAUSADO por estoque zero  
+- CC0009: 35 un · R$5.206 (15,0%) — Ativo
+- CC0008: 11 un · R$2.750 (7,9%)  — Ativo · ESTOQUE CRÍTICO: 3 un
+- CC0006: 8 un  · R$2.080 (6,0%)  — PAUSADO por estoque zero
+
+ANÚNCIOS:
+- Ativos: 2 de 17 (CC0008 e CC0009)
+- Pausados: 15 (estoque zero)
+- CC0008: catalog listing · 152 visitas/semana · conversão 1,97% · estoque 3 un ⚠
+- CC0009: não catalog · 4 visitas/semana · categoria errada (ARTS_AND_CRAFTS)
+
+REPUTAÇÃO:
+- Nível 5 Verde · Power Seller Silver
+- Reclamações: 0,4% · Cancelamentos: 0% · Atrasos: 0%
+- 1 mediação aberta (#5506272278) desde 03/mai
+- 2 perguntas sem resposta (68 dias e 20 dias)
+
+METAS vs REALIZADO:
+- CC0001: 62 un realizadas · meta 80 → 78% atingido
+- CC0002: 32 un · meta 80 → 40% ⚠
+- CC0008: 11 un · meta 30 → 37% (estoque crítico)
+- CC0009: 35 un · meta 30 → 117% ✓
+
+VISITAS:
+- CC0008: 152/semana (meta 700/mês, atual 350 projetado → 50%)
+- CC0009: 4/semana (meta 300/mês, colapso por categoria errada)
+
+GAP DE RECEITA:
+- R$ 35k/mês não capturado por anúncios pausados
+- CC0001+CC0002 pausados = 63% da receita travada
+`;
+}
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const panel = document.getElementById('chat-panel');
+  const badge = document.getElementById('chat-badge');
+  panel.classList.toggle('open', chatOpen);
+  if (chatOpen) {
+    badge.style.display = 'none';
+    if (chatHistory.length === 0) initChat();
+    setTimeout(() => document.getElementById('chat-input').focus(), 300);
+  }
+}
+
+function initChat() {
+  const welcome = `Olá! Sou o **Agente Comercial Cacto** 🤖
+
+Tenho acesso completo aos dados da sua conta no Mercado Livre e posso ajudá-lo com:
+
+• Análise de vendas e faturamento
+• Diagnóstico de anúncios e visitas
+• Alertas e riscos operacionais
+• Planos de ação priorizados
+• Comparativos por período
+
+O que você quer analisar hoje?`;
+  appendMsg(welcome, 'bot');
+}
+
+function appendMsg(text, type, time=true) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `msg msg-${type}`;
+
+  // Formatar markdown simples
+  let formatted = text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^• /gm, '<div class="msg-item"><span>$&</span></div>')
+    .replace(/\n/g, '<br>');
+
+  div.innerHTML = formatted;
+
+  if (time) {
+    const t = document.createElement('div');
+    t.className = 'msg-time';
+    t.textContent = new Date().toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+    div.appendChild(t);
+  }
+
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg-typing';
+  div.id = 'typing-indicator';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  document.getElementById('typing-indicator')?.remove();
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  input.style.height = 'auto';
+
+  // Esconder sugestões após primeira mensagem
+  document.getElementById('chat-suggestions').style.display = 'none';
+
+  appendMsg(text, 'user');
+  chatHistory.push({ role: 'user', content: text });
+
+  showTyping();
+
+  try {
+    const systemMsg = AGENT_PROMPT + '\n\nCONTEXTO DE DADOS:\n' + getContextData();
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemMsg,
+        messages: chatHistory.slice(-10) // últimas 10 msgs para contexto
+      })
+    });
+
+    const data = await response.json();
+    removeTyping();
+
+    const reply = data.content?.[0]?.text || 'Desculpe, não consegui processar. Tente novamente.';
+    chatHistory.push({ role: 'assistant', content: reply });
+    appendMsg(reply, 'bot');
+
+  } catch(e) {
+    removeTyping();
+    appendMsg('⚠️ Erro ao conectar com o agente. Verifique sua conexão e tente novamente.', 'bot');
+    console.error('Chat error:', e);
+  }
+}
+
+function sendSuggestion(btn) {
+  const text = btn.textContent.replace(/^[^\s]+\s/, ''); // remove emoji
+  document.getElementById('chat-input').value = text;
+  sendChat();
+}
+
+function chatKeydown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendChat();
+  }
+  // Auto-resize textarea
+  const ta = e.target;
+  ta.style.height = 'auto';
+  ta.style.height = Math.min(ta.scrollHeight, 80) + 'px';
+}
+
+// Mostrar badge ao carregar se chat nunca foi aberto
+setTimeout(() => {
+  if (!chatOpen && !localStorage.getItem('chat_opened')) {
+    const badge = document.getElementById('chat-badge');
+    if (badge) { badge.style.display = 'flex'; badge.textContent = '1'; }
+  }
+}, 4000);
 // ─── INIT ─────────────────────────────────────────────────────────────────
 // Remover splash screen
 setTimeout(() => {
@@ -1490,10 +1839,40 @@ setTimeout(() => {
     setTimeout(() => splash.remove(), 400);
   }
 }, 1200);
+window._chatContext = 'Período: Mai/2026 (01/05 a 14/05)';
 setPage(0);
 checkSheetsConnection();
 reloadMetas();
 showIOSInstallTip();
 </script>
+
+<!-- CHAT FAB -->
+<button class="chat-fab" id="chat-fab" onclick="toggleChat()" title="Agente Comercial">
+  🤖
+  <span class="chat-badge" id="chat-badge" style="display:none">1</span>
+</button>
+
+<!-- CHAT PANEL -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Agente Comercial Cacto</div>
+      <div class="chat-header-status"><span class="chat-online-dot"></span>Online · especialista ML</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <button class="chat-sug" onclick="sendSuggestion(this)">📊 Análise do mês</button>
+    <button class="chat-sug" onclick="sendSuggestion(this)">⚠️ Alertas críticos</button>
+    <button class="chat-sug" onclick="sendSuggestion(this)">🎯 Plano de ação</button>
+    <button class="chat-sug" onclick="sendSuggestion(this)">📦 Status estoque</button>
+  </div>
+  <div class="chat-input-row">
+    <textarea class="chat-input" id="chat-input" placeholder="Pergunte sobre vendas, anúncios, metas..." rows="1" onkeydown="chatKeydown(event)"></textarea>
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
 </body>
 </html>
