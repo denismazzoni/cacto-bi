@@ -51,6 +51,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .sb-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8)}
 .sb-btn.active{background:#b8862a;color:#fff}
 .sb-sep{width:32px;height:1px;background:rgba(255,255,255,0.1);margin:6px 0}
+.sb-link{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.2s;margin-top:auto}
+.sb-link:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8)}
 
 /* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;padding:20px 20px 20px 16px;gap:0}
@@ -419,6 +422,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   <div class="sb-sep"></div>
   <button class="sb-btn" onclick="setPage(5)" title="Ações">⚡</button>
   <button class="sb-btn" onclick="setPage(6)" title="Scorecard">🏆</button>
+  <a class="sb-link" href="./expedicao.html" title="Expedição &amp; Separação">🚚</a>
 </div>
 
 <div class="main">
