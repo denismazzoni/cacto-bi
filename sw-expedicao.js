@@ -1,10 +1,10 @@
 /* Service worker do app de Expedição & Separação.
    Cache-first no shell para o app abrir e operar sem rede no galpão.
    Requisições ao Apps Script nunca são cacheadas. */
-const CACHE = 'cacto-exp-v1';
+const CACHE = 'cacto-exp-v2';
 const SHELL = [
   './expedicao.html',
-  'https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js'
+  './vendor/jsQR.min.js'
 ];
 
 self.addEventListener('install', e => {

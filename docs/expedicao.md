@@ -111,14 +111,31 @@ PVs separados, itens lidos, tempo médio por PV, tempo médio por item,
 itens/hora e tempo total. No Sheets, `Duracao_seg` e `Tempo_Medio_Item_seg`
 já vêm numéricos para dashboards.
 
+## Leitura por câmera
+
+As duas etiquetas — PV e item — são QR Code, e o app lê QR em qualquer
+aparelho, sem depender de rede:
+
+- **Chrome/Android** usa a `BarcodeDetector` nativa, mais rápida e que também
+  cobre código de barras (Code 128, EAN, ITF…), caso alguma etiqueta mude de
+  formato no futuro.
+- **iPhone/Safari** e demais navegadores sem `BarcodeDetector` caem no
+  **jsQR**, que vem no próprio repositório (`vendor/jsQR.min.js`) — sem CDN,
+  então funciona também com o aparelho offline.
+
+Para ser rápido no aparelho, o decodificador analisa ~12 quadros por segundo e
+foca no quadrado central da mira; a cada 4 análises varre o quadro inteiro,
+para não ignorar um código pouco fora da mira. Em teste com câmera simulada,
+a leitura levou ~200–270 ms.
+
 ## Limites conhecidos
 
 - A leitura por câmera exige **HTTPS** (ou `localhost`). Em `http://` o
   navegador bloqueia `getUserMedia` — a digitação manual continua funcionando.
-- Códigos **de barras** (Code 128, EAN, ITF…) dependem da `BarcodeDetector`
-  nativa, presente no Chrome/Android. Em navegadores sem ela, a leitura pela
-  câmera cobre **apenas QR Code** (jsQR); para código de barras nesses
-  aparelhos, use um coletor Bluetooth ou a digitação.
+- **Micro QR** (o formato reduzido, de um único marcador de canto) não é lido
+  pelo jsQR. QR Code comum, de qualquer versão, é lido normalmente — se a
+  etiqueta for gerada por um sistema que ofereça as duas opções, mantenha o QR
+  padrão.
 - Só uma separação fica aberta por vez, por aparelho. Ler o QR de outro PV com
   uma separação em andamento não descarta o trabalho: o app pede para
   finalizar ou cancelar antes.
