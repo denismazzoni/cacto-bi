@@ -1,8 +1,13 @@
 # cacto-bi
 
-Ferramentas web da Cacto Group — páginas únicas, sem build, servidas estaticamente.
+Dashboard de gestão comercial do Mercado Livre — Cacto Group.
+Página única, sem build, servida por GitHub Pages em
+https://denismazzoni.github.io/cacto-bi/
 
-| App | Arquivo | O que faz |
-|---|---|---|
-| **Cacto BI** | [`index.html`](index.html) | Dashboard de gestão comercial do Mercado Livre. |
-| **Expedição & Separação** | [`expedicao.html`](expedicao.html) | App de celular para separar material lendo o QR do PV e o QR das etiquetas dos itens, cronometrando a separação e registrando a liberação para produção. [Documentação](docs/expedicao.md). |
+| Arquivo | O que é |
+|---|---|
+| [`index.html`](index.html) | O dashboard. |
+
+> O app de Expedição e Separação, que ficou aqui por um tempo, é da ABC Parts
+> e foi movido para o repositório
+> [`abc-parts`](https://github.com/denismazzoni/abc-parts).
