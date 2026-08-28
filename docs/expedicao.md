@@ -1,4 +1,4 @@
-# App de Expedição e Separação
+# App de Expedição e Separação — ABC Parts
 
 App de celular (PWA) para registrar a separação de material do estoque:
 lê o QR do **PV**, cronometra a separação, registra o **número de
@@ -44,7 +44,7 @@ Aba **⚙️ Config**:
 | **Leitura contínua de itens** | Mantém a câmera aberta entre um item e outro. |
 | **Bloquear item repetido** | Impede ler duas vezes o mesmo número no mesmo PV. |
 | **Regex do PV / do item** | Extrai o número quando o QR traz conteúdo extra. |
-| **URL do Apps Script** | Endpoint de gravação no Sheets. Vazio = só local. |
+| **URL do Apps Script** | Endpoint de gravação na planilha da ABC Parts. Vem vazio: sem ela, o app grava só no aparelho. |
 | **Abas** | Nomes das abas de destino (`Separacao` e `Separacao_Itens`). |
 
 ### Formato dos códigos
@@ -74,10 +74,9 @@ O script de gravação está em [`../apps-script/expedicao.gs`](../apps-script/e
    - Quem pode acessar: **Qualquer pessoa**
 3. Copie a URL terminada em `/exec` e cole em **Config › URL do Apps Script**.
 
-> O script também responde ao formato antigo `{sheet, row, data}` usado pelo
-> dashboard Cacto BI (aba `Acoes`). Ainda assim, compare com o script que já
-> está publicado antes de substituí-lo — se o atual tiver alguma regra
-> própria, junte as duas partes em vez de sobrescrever.
+> O script deve ser publicado na **planilha da ABC Parts**, não em outra. O app
+> não vem com URL preenchida de propósito: sem ela, ele trabalha só no
+> aparelho, e é você quem aponta para a planilha certa em Config.
 
 As abas são criadas sozinhas na primeira gravação.
 

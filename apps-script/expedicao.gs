@@ -1,5 +1,5 @@
 /**
- * Cacto — endpoint do Google Sheets para o app de Expedição e Separação.
+ * ABC Parts — endpoint do Google Sheets para o app de Expedição e Separação.
  *
  * Publicar em: Implantar › Nova implantação › Tipo "App da Web"
  *   Executar como .......: Eu
@@ -14,8 +14,8 @@
  *       Grava/atualiza uma separação e seus itens (upsert pelo ID — reenviar
  *       a mesma separação não duplica linhas).
  *   {sheet, row, data:{coluna: valor}}
- *       Formato antigo usado pelo dashboard Cacto BI (aba Acoes): atualiza a
- *       linha cuja primeira coluna vale `row`.
+ *       Atualiza a linha cuja primeira coluna vale `row`. Mantido por ser um
+ *       formato genérico de atualização, útil para outras abas da planilha.
  */
 
 var ID_PLANILHA = '';  // vazio = usa a planilha à qual o script está vinculado
@@ -151,7 +151,7 @@ function _apagarPor(aba, coluna, valor) {
   }
 }
 
-/* ── COMPATIBILIDADE COM O CACTO BI (aba Acoes) ────────────────────────── */
+/* ── ATUALIZAÇÃO GENÉRICA DE LINHA ─────────────────────────────────────── */
 
 function atualizarLinha(req) {
   var ss = _planilha();
